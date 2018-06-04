@@ -114,21 +114,19 @@ public class Game
             System.out.println("I don't know what you mean...");
             return false;
         }
-
+        
         String commandWord = command.getCommandWord();
-        if (commandWord.equals("help")) {
-            printHelp();
+        
+        switch(commandWord)
+        {
+            case "help" : printHelp();
+            case "go" : goRoom(command);
+            case "quit" : quit(command);
+            
         }
-        else if (commandWord.equals("go")) {
-            goRoom(command);
-        }
-        else if (commandWord.equals("quit")) {
-            wantToQuit = quit(command);
-        }
-        // else command not recognised.
         return wantToQuit;
     }
-
+        
     // implementations of user commands:
 
     /**
@@ -136,7 +134,7 @@ public class Game
      * Here we print some stupid, cryptic message and a list of the 
      * command words.
      */
-    private void printHelp() 
+    private void printHelp()
     {
         System.out.println("You are lost. You are alone. You wander");
         System.out.println("around at the university.");
