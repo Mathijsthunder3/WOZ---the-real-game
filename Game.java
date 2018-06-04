@@ -19,13 +19,14 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-        
+    private Levelbuilder lvls;
     /**
      * Create the game and initialise its internal map.
      */
     public Game() 
     {
-        createRooms();
+        lvls = new Levelbuilder();
+        currentRoom = lvls.buildLevel1();
         parser = new Parser();
     }
 
@@ -41,7 +42,7 @@ public class Game
     
     /**
      * Create all the rooms and link their exits together.
-     */
+     
     private void createRooms()
     {
         Room outside, theater, pub, lab, office;
@@ -69,8 +70,7 @@ public class Game
 
         currentRoom = outside;  // start game outside
     }
-
-    /**
+    
      *  Main play routine.  Loops until end of play.
      */
     public void play() 
@@ -85,6 +85,7 @@ public class Game
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
+        
         System.out.println("Thank you for playing.  Good bye.");
     }
 
@@ -120,9 +121,11 @@ public class Game
         switch(commandWord)
         {
             case "help" : printHelp();
+                          break;
             case "go" : goRoom(command);
-            case "quit" : quit(command);
-            
+                          break;
+            case "quit" : wantToQuit = quit(command);
+                          break;
         }
         return wantToQuit;
     }
