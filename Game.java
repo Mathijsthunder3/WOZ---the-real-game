@@ -30,6 +30,16 @@ public class Game
     }
 
     /**
+     * Creates a new player.
+     */
+    public void createPlayer(String naam)
+    {
+        int hp = 10;
+        int xp = 0;
+        Player player = new Player(naam, currentRoom, hp, xp);
+    }
+    
+    /**
      * Create all the rooms and link their exits together.
      */
     private void createRooms()

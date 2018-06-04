@@ -1,3 +1,5 @@
+import java.util.HashSet;
+import java.util.Random;
 
 /**
  * class Player - Houdt de speler bij.
@@ -11,15 +13,60 @@ public class Player
     private Room currentRoom;
     private int hp;
     private int xp;
+    private int power;
+    Random rand = new Random();
+    private HashSet<Item> rugzak;
     
     /**
      * maakt de speler klaar
      */
-    public void spelerKlaarmaken(String naam,Room currentRoom,int hp,int xp)
+    public Player(String naam,Room currentRoom,int hp,int xp)
     {
         this.naam = naam;
         this.currentRoom = currentRoom;
         this.hp = hp;
         this.xp = xp;
+    }
+    
+    public void getStronger(){
+        int  n = rand.nextInt(2) + 1;
+        if(n == 1)
+        {
+            hp++;
+        }
+        else
+        {
+            xp++;
+        }
+    }
+    
+    public int attack()
+    {
+        int  n = rand.nextInt(2) + 1;
+        if(n == 1)
+        {
+            return 1;
+        }
+        return 0;
+    }
+    
+    public int superAttack()
+    {
+        int  n = rand.nextInt(2) + 1;
+        if(n == 1)
+        {
+            return 3;
+        }
+        return 0; 
+    }
+        
+    public void neemItem(Item item)
+    {
+        rugzak.add(item);
+    }
+    
+    public void dropItem(Item item)
+    {
+        rugzak.remove(item);
     }
 }
