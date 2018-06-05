@@ -18,12 +18,11 @@ public class Personage
     /**
      * Constructor voor objects van class Personage
      */
-    public Personage(String naam, String beschrijving, Room currentRoom, int HP, int power, boolean agressive)
+    public Personage(String naam, String beschrijving, int HP, int power, boolean agressive)
     {
         this.naam = naam;
         this.beschrijving = beschrijving;
         this.HP = HP;
-        this.currentRoom = currentRoom;
         this.power = power;
         this.agressive = agressive;
     }
