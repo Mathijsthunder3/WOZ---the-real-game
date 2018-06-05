@@ -4,7 +4,7 @@ import java.util.Random;
 /**
  * class Player - Houdt de speler bij.
  *
- * @author Mathijs Slabbinck & ook een beetje Jonathan Dhoop
+ * @author Mathijs Slabbinck & ook een beetje Jonathan Dhoop + :3
  * @version 29/05/2018
  */
 public class Player
@@ -59,14 +59,23 @@ public class Player
         }
         return 0; 
     }
-        
-    public void neemItem(Item item)
+    
+    public void pickUpItem(Item item)
     {
-        rugzak.add(item);
+        if (currentRoom.isItemInRoom(item))
+        {
+            rugzak.add(item);
+            currentRoom.removeItem(item);
+        }
     }
     
     public void dropItem(Item item)
     {
-        rugzak.remove(item);
+        if (rugzak.contains(item))
+        {
+            rugzak.remove(item);
+            currentRoom.addItem(item);
+        }
     }
+    
 }
