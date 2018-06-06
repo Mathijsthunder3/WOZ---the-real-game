@@ -38,9 +38,9 @@ public class Levelbuilder
         trol = new Personage("trol", "klein hyperactief ventje", 100, 15, true);
         witch = new Personage("witch", "a bitchy witchy", 70, 35, false);
         
-        
-        
-        
+
+        //createItems 
+
 
         return outside;  // start game outside
     }

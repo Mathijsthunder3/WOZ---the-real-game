@@ -20,7 +20,10 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;        // stores exits of this room.
-    private HashSet<Personage> personages;
+
+    private HashSet<Personage> personages;  // stores personages in this room
+    private HashSet<Item> items;  // stores items in this room
+
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
@@ -89,10 +92,22 @@ public class Room
     {
         return exits.get(direction);
     }
-    
+
     public void addPersonage(Personage naam)
     {
         personages.add(naam);
+
+    public boolean isItemInRoom(Item item)
+    {
+        return items.contains(item);
+    }
+    public void addItem(Item item)
+    {
+        items.add(item);
+    }
+    public void  removeItem(Item item)
+    {
+        items.remove(item);
     }
 }
 
