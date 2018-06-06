@@ -10,6 +10,7 @@ public class Levelbuilder
     public Room buildLevel1()
     {
         Room outside, theater, pub, lab, office;
+        Personage trol, witch;
         
         
         // create the rooms
@@ -32,7 +33,14 @@ public class Levelbuilder
         lab.setExit("east", office);
 
         office.setExit("west", lab);
-        //createItems nodig
+        
+        // create figures
+        trol = new Personage("trol", "klein hyperactief ventje", 100, 15, true);
+        witch = new Personage("witch", "a bitchy witchy", 70, 35, false);
+        
+
+        //createItems 
+
 
         return outside;  // start game outside
     }
