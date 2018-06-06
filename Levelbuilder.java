@@ -32,6 +32,7 @@ public class Levelbuilder
         lab.setExit("east", office);
 
         office.setExit("west", lab);
+        //createItems nodig
 
         return outside;  // start game outside
     }
