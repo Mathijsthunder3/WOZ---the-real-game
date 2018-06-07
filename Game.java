@@ -1,3 +1,4 @@
+import java.util.Scanner;
 /**
  *  This class is the main class of the "World of Zuul" application. 
  *  "World of Zuul" is a very simple, text based adventure game.  Users 
@@ -14,6 +15,7 @@
  * @author  Michael Kölling and David J. Barnes
  * @version 2016.02.29
  */
+
 
 public class Game 
 {
@@ -93,13 +95,46 @@ public class Game
      * Print out the opening message for the player.
      */
     private void printWelcome()
+    
     {
+        String naam = naamGetter();
+        if(naam == null){
+            printWelcome();
+            return;
+        }
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
+        System.out.println("Welcome "+naam+" to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type 'help' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
+        return;
+    }
+    /**
+     * kijkt of je 2 maal dezelfde naam invoert zodat je niet met een typfout speelt
+     */
+    private String naamGetter(){
+        System.out.println("what is your name?");
+        String naam = vraagNaam();
+        System.out.println("enter name again please");
+        String naam2 = vraagNaam();
+        if(naam.equals(naam2)){
+            return naam;
+        }
+        else{
+            return null;
+        }
+    }
+    /**
+     * vraag de naam van de autistische gebruiker lol
+     */
+    private String vraagNaam(){
+        Scanner reader;
+        reader = new Scanner(System.in);
+        String inputLine;   // will hold the full input line
+        System.out.print("> ");     // print prompt
+        inputLine = reader.nextLine();
+        return inputLine;
     }
 
     /**
