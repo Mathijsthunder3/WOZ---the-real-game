@@ -4,7 +4,7 @@ import java.util.Random;
 /**
  * class Player - Houdt de speler bij.
  *
- * @author Mathijs Slabbinck & ook een beetje Jonathan Dhoop + :3
+ * @author Mathijs Slabbinck & ook een beetje Jonathan Dhoop
  * @version 29/05/2018
  */
 public class Player
@@ -52,7 +52,7 @@ public class Player
     
     public int superAttack()
     {
-        int  n = rand.nextInt(2) + 1;
+        int  n = rand.nextInt(3) + 1;
         if(n == 1)
         {
             return 3;
@@ -78,4 +78,13 @@ public class Player
         }
     }
     
+    public int getHp()
+    {
+        return hp;
+    }    
+    
+    public int getXp()
+    {
+        return xp;
+    }   
 }
