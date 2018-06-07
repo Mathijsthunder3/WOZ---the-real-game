@@ -27,7 +27,9 @@ public class Player
         this.hp = hp;
         this.xp = xp;
     }
-    
+    public void setRoom(Room room){
+        currentRoom=room;
+    }
     public void getStronger(){
         int  n = rand.nextInt(2) + 1;
         if(n == 1)
@@ -86,5 +88,8 @@ public class Player
     public int getXp()
     {
         return xp;
-    }   
+    }  
+    public Room getRoom(){
+        return currentRoom;
+    }
 }
