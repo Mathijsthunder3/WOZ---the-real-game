@@ -20,6 +20,7 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private Levelbuilder lvls;
+    private Player player;
     /**
      * Create the game and initialise its internal map.
      */
@@ -37,7 +38,7 @@ public class Game
     {
         int hp = 10;
         int xp = 0;
-        Player player = new Player(naam, currentRoom, hp, xp);
+        player = new Player(naam, currentRoom, hp, xp);
     }
     
     /**
@@ -126,10 +127,25 @@ public class Game
                           break;
             case "quit" : wantToQuit = quit(command);
                           break;
+            case "look" : lookInRoom();
+                          break;
+            case "stats" : getStats();
+                           break;
         }
         return wantToQuit;
     }
-        
+     
+    public void getStats()
+    {
+        System.out.println("HP" + player.getHp());
+        System.out.println("XP" + player.getXp());
+    }
+    
+    public void lookInRoom()
+    {
+        System.out.println(currentRoom.getLongDescription());
+    }
+    
     // implementations of user commands:
 
     /**
