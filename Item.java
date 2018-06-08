@@ -7,15 +7,16 @@
  */
 public class Item
 {
-    private String Naam;
-    private int Gewicht;
-    private String Beschrijving;
+
+    private String naam;
+    private int gewicht;
+    private String beschrijving;
     
 
     public Item(String naam , int gewicht , String beschrijving) 
     {
-        this.Naam = naam;
-        this.Gewicht = gewicht;
-        this.Beschrijving = beschrijving;
+        this.naam = naam;
+        this.newicht = gewicht;
+        this.beschrijving = beschrijving;
     }
 }

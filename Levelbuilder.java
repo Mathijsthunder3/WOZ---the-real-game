@@ -40,6 +40,8 @@ public class Levelbuilder
         // create figures
         trol = new Personage("trol", "klein hyperactief ventje", 100, 15, true);
         witch = new Personage("witch", "a bitchy witchy", 70, 35, false);
+        office.addPersonage(trol);
+        pub.addPersonage(witch);
         
 
         //createItems 

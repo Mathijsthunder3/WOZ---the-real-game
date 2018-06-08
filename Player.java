@@ -4,7 +4,7 @@ import java.util.Random;
 /**
  * class Player - Houdt de speler bij.
  *
- * @author Mathijs Slabbinck & ook een beetje Jonathan Dhoop + :3
+ * @author Mathijs Slabbinck & ook een beetje Jonathan Dhoop
  * @version 29/05/2018
  */
 public class Player
@@ -40,7 +40,7 @@ public class Player
         }
     }
     
-    public int attack()
+    public int getAttack()
     {
         int  n = rand.nextInt(2) + 1;
         if(n == 1)
@@ -50,9 +50,9 @@ public class Player
         return 0;
     }
     
-    public int superAttack()
+    public int getSuperAttack()
     {
-        int  n = rand.nextInt(2) + 1;
+        int  n = rand.nextInt(3) + 1;
         if(n == 1)
         {
             return 3;
@@ -77,6 +77,7 @@ public class Player
             currentRoom.addItem(item);
         }
     }
+
     public boolean openRoom()
     {
         if (rugzak.contains(key))
@@ -85,4 +86,16 @@ public class Player
             currentRoom.addItem(item);
         }
     }
+
+    
+    public int getHp()
+    {
+        return hp;
+    }    
+    
+    public int getXp()
+    {
+        return xp;
+    }   
+
 }
