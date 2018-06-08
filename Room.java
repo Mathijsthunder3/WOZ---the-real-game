@@ -23,7 +23,7 @@ public class Room
 
     private HashSet<Personage> personages;  // stores personages in this room
     private HashSet<Item> items;  // stores items in this room
-
+    private boolean keyroom;
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
@@ -35,8 +35,16 @@ public class Room
         this.description = description;
         exits = new HashMap<>();
         personages = new HashSet<>();
+        keyroom = false;
     }
-
+    public void setKeyroom(boolean key)
+    {
+        keyroom = key;
+    }
+    public boolean getKeyroom()
+    {
+        return keyroom;
+    }
     /**
      * Define an exit from this room.
      * @param direction The direction of the exit.
@@ -64,7 +72,7 @@ public class Room
      */
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString();
+        return "You are " + description + ".\n" + getExitString() + ".\n" + showPersonages();
     }
 
     /**
@@ -93,10 +101,14 @@ public class Room
         return exits.get(direction);
     }
 
-    public void addPersonage(Personage naam)
+    public void addPersonage(Personage personage)
     {
-        personages.add(naam);
+
+
+        personages.add(personage);
+
     }
+
 
     public boolean isItemInRoom(Item item)
     {
@@ -110,5 +122,14 @@ public class Room
     {
         items.remove(item);
     }
+    
+    private String showPersonages(){
+        String returnPersonages = "";
+        if(personages != null){
+            for(Personage p: personages){
+                returnPersonages += "There is a " + p.getNaam() + " in the room!\n";
+            }
+        }
+        return returnPersonages;
+    }
 }
-

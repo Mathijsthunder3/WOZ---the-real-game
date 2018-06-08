@@ -23,6 +23,7 @@ public class Game
     private Room currentRoom;
     private Levelbuilder lvls;
     private Player player;
+    private Personage personage;
     /**
      * Create the game and initialise its internal map.
      */
@@ -43,7 +44,10 @@ public class Game
         player = new Player(naam, currentRoom, hp, xp);
     }
     
-    
+
+    /**
+      *  Main play routine.  Loops until end of play.
+      */
     public void play() 
     {            
         printWelcome();
@@ -81,6 +85,7 @@ public class Game
         
         return;
     }
+    
     /**
      * kijkt of je 2 maal dezelfde naam invoert zodat je niet met een typfout speelt
      */
@@ -96,6 +101,7 @@ public class Game
             return null;
         }
     }
+    
     /**
      * vraag de naam van de autistische gebruiker lol
      */
@@ -136,10 +142,42 @@ public class Game
                           break;
             case "stats" : getStats();
                            break;
+            case "attack" : attackMonster(command);
+                            break;
+            case "superAttack" : superAttackMonster(command);
+                                 break;
         }
         return wantToQuit;
     }
      
+    public void attackMonster(Command command)
+    {
+        if(!command.hasSecondWord()) {
+            // if there is no second word, we don't know what we need to attack...
+            System.out.println("Attack what?");
+            return;
+        }
+        
+        String monsterAttacked = command.getSecondWord();
+        
+        int health = personage.getHP();
+        personage.setHP(health - player.getAttack());
+    }
+    
+    public void superAttackMonster(Command command)
+    {
+        if(!command.hasSecondWord()) {
+            // if there is no second word, we don't know what we need to attack...
+            System.out.println("SuperAttack what?");
+            return;
+        }
+        
+        String monsterSupperAttacked = command.getSecondWord();
+        
+        int healthPoints = personage.getHP();
+        personage.setHP(healthPoints - player.getSuperAttack());
+    }
+    
     public void getStats()
     {
         System.out.println("HP" + player.getHp());
@@ -191,9 +229,20 @@ public class Game
             System.out.println("There is no door!");
         }
         else {
+
             player.setRoom(nextRoom);
             System.out.println(player.getRoom().getLongDescription());
+
+            if (!nextRoom.getKeyroom()){
+                currentRoom = nextRoom;
+                System.out.println(currentRoom.getLongDescription());
+            }
+            else 
+            {
+                
+            }
         }
+        
     }
 
     /** 

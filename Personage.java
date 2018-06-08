@@ -37,6 +37,11 @@ public class Personage
         return beschrijving;
     }
     
+    public void setHP(int HP)
+    {
+        this.HP = HP;
+    }
+    
     public int getHP()
     {
         return HP;
@@ -55,14 +60,5 @@ public class Personage
     public boolean getAgressive()
     {
         return agressive;
-    }
-    
-    public void showInfo()
-    {
-        System.out.println(naam);
-        System.out.println(beschrijving);
-        System.out.println(HP);
-        System.out.println(power);
-        System.out.println(agressive);
     }
 }
