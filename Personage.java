@@ -37,6 +37,11 @@ public class Personage
         return beschrijving;
     }
     
+    public void setHP(int HP)
+    {
+        this.HP = HP;
+    }
+    
     public int getHP()
     {
         return HP;

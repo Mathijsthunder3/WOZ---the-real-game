@@ -23,6 +23,7 @@ public class Game
     private Room currentRoom;
     private Levelbuilder lvls;
     private Player player;
+    private Personage personage;
     /**
      * Create the game and initialise its internal map.
      */
@@ -44,38 +45,8 @@ public class Game
     }
     
     /**
-     * Create all the rooms and link their exits together.
-     
-    private void createRooms()
-    {
-        Room outside, theater, pub, lab, office;
-      
-        // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
-        
-        // initialise room exits
-        outside.setExit("east", theater);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
-
-        theater.setExit("west", outside);
-
-        pub.setExit("east", outside);
-
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
-
-        office.setExit("west", lab);
-
-        currentRoom = outside;  // start game outside
-    }
-    
-     *  Main play routine.  Loops until end of play.
-     */
+      *  Main play routine.  Loops until end of play.
+      */
     public void play() 
     {            
         printWelcome();
@@ -111,6 +82,7 @@ public class Game
         System.out.println(currentRoom.getLongDescription());
         return;
     }
+    
     /**
      * kijkt of je 2 maal dezelfde naam invoert zodat je niet met een typfout speelt
      */
@@ -126,6 +98,7 @@ public class Game
             return null;
         }
     }
+    
     /**
      * vraag de naam van de autistische gebruiker lol
      */
@@ -166,10 +139,42 @@ public class Game
                           break;
             case "stats" : getStats();
                            break;
+            case "attack" : attackMonster(command);
+                            break;
+            case "superAttack" : superAttackMonster(command);
+                                 break;
         }
         return wantToQuit;
     }
      
+    public void attackMonster(Command command)
+    {
+        if(!command.hasSecondWord()) {
+            // if there is no second word, we don't know what we need to attack...
+            System.out.println("Attack what?");
+            return;
+        }
+        
+        String monsterAttacked = command.getSecondWord();
+        
+        int health = personage.getHP();
+        personage.setHP(health - player.getAttack());
+    }
+    
+    public void superAttackMonster(Command command)
+    {
+        if(!command.hasSecondWord()) {
+            // if there is no second word, we don't know what we need to attack...
+            System.out.println("SuperAttack what?");
+            return;
+        }
+        
+        String monsterSupperAttacked = command.getSecondWord();
+        
+        int healthPoints = personage.getHP();
+        personage.setHP(healthPoints - player.getSuperAttack());
+    }
+    
     public void getStats()
     {
         System.out.println("HP" + player.getHp());
