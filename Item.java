@@ -16,7 +16,7 @@ public class Item
     public Item(String naam , int gewicht , String beschrijving) 
     {
         this.naam = naam;
-        this.newicht = gewicht;
+        this.gewicht = gewicht;
         this.beschrijving = beschrijving;
     }
 }
