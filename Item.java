@@ -7,8 +7,7 @@
  */
 public class Item
 {
-    public String Naam;
-    public int Gewicht;
-    public String Beschrijving;
-    
+    private String naam;
+    private int gewicht;
+    private String beschrijving;
 }

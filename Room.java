@@ -95,7 +95,9 @@ public class Room
 
     public void addPersonage(Personage personage)
     {
+
         personages.add(personage);
+
     }
 
     public boolean isItemInRoom(Item item)
