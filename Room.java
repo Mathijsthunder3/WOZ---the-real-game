@@ -64,7 +64,7 @@ public class Room
      */
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString();
+        return "You are " + description + ".\n" + getExitString() + ".\n" + showPersonages();
     }
 
     /**
@@ -93,9 +93,11 @@ public class Room
         return exits.get(direction);
     }
 
-    public void addPersonage(Personage naam)
+    public void addPersonage(Personage personage)
     {
-        personages.add(naam);
+
+        personages.add(personage);
+
     }
 
     public boolean isItemInRoom(Item item)
@@ -110,5 +112,14 @@ public class Room
     {
         items.remove(item);
     }
+    
+    private String showPersonages(){
+        String returnPersonages = "";
+        if(personages != null){
+            for(Personage p: personages){
+                returnPersonages += "There is a " + p.getNaam() + " in the room!\n";
+            }
+        }
+        return returnPersonages;
+    }
 }
-
