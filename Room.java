@@ -23,7 +23,7 @@ public class Room
 
     private HashSet<Personage> personages;  // stores personages in this room
     private HashSet<Item> items;  // stores items in this room
-
+    private boolean keyroom;
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
@@ -35,8 +35,16 @@ public class Room
         this.description = description;
         exits = new HashMap<>();
         personages = new HashSet<>();
+        keyroom = false;
     }
-
+    public void setKeyroom(boolean key)
+    {
+        keyroom = key;
+    }
+    public boolean getKeyroom()
+    {
+        return keyroom;
+    }
     /**
      * Define an exit from this room.
      * @param direction The direction of the exit.
@@ -96,9 +104,11 @@ public class Room
     public void addPersonage(Personage personage)
     {
 
+
         personages.add(personage);
 
     }
+
 
     public boolean isItemInRoom(Item item)
     {

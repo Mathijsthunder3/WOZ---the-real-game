@@ -77,6 +77,16 @@ public class Player
             currentRoom.addItem(item);
         }
     }
+
+    public boolean openRoom()
+    {
+        if (rugzak.contains(key))
+        {
+            rugzak.remove(item);
+            currentRoom.addItem(item);
+        }
+    }
+
     
     public int getHp()
     {
@@ -87,4 +97,5 @@ public class Player
     {
         return xp;
     }   
+
 }
