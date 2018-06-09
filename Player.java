@@ -83,7 +83,8 @@ public class Player
     /*
     public boolean openRoom()
     {
-        if(rugzak.contains(key))
+
+        if (rugzak.contains())
         {
             rugzak.remove(item);
             currentRoom.addItem(item);
